@@ -11,15 +11,13 @@ const main = async () => {
     const port = 4000;
 
     await createConnections([{
-        host: 'ec2-52-0-93-3.compute-1.amazonaws.com',
-        username: 'jilcswurwxfeor',
-        password: 'fddc356fc93ae54a393e8745175578d69c05095ebef20d697a86d3f893b1cef6',
-        port:5432,
-        database: 'dajs9255cl9b0',
         type: 'postgres',
         entities: [User],
-        logging: true,
-        synchronize: true,
+        logging: false,
+        synchronize: false,
+        extra: {
+            ssl: true
+        },
         url: 'postgres://jilcswurwxfeor:fddc356fc93ae54a393e8745175578d69c05095ebef20d697a86d3f893b1cef6@ec2-52-0-93-3.compute-1.amazonaws.com:5432/dajs9255cl9b0'
     }]);
     
