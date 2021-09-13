@@ -10,17 +10,12 @@ const main = async () => {
     const app = express();
     const port = 4000;
 
-    const corsConfig = {
-        origin: 'https://trivia-contest.vercel.app/',
-        credentials: true
-    }
-
     await createConnections([{
         url: 'postgres://jilcswurwxfeor:fddc356fc93ae54a393e8745175578d69c05095ebef20d697a86d3f893b1cef6@ec2-52-0-93-3.compute-1.amazonaws.com:5432/dajs9255cl9b0',
         entities: [User],
         type: 'postgres',
-        logging: false,
-        synchronize: false,
+        logging: true,
+        synchronize: true,
         extra: {
             ssl: {
                 rejectUnauthorized: false
@@ -37,7 +32,7 @@ const main = async () => {
 
     await apolloServer.start();
 
-    apolloServer.applyMiddleware({app, cors: corsConfig});
+    apolloServer.applyMiddleware({app});
 
     app.listen(port, () => {
         console.log(`The server listening at http://localhost:${port}`)
