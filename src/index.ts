@@ -11,7 +11,7 @@ const main = async () => {
     const port = 4000;
 
     const corsConfig = {
-        origin: 'https://trivia-contest-lx8pw7ydj-yamminglok-gmailcom.vercel.app/',
+        origin: 'https://trivia-contest.vercel.app/',
         credentials: true
     }
 
