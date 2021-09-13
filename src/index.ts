@@ -11,14 +11,15 @@ const main = async () => {
     const port = 4000;
 
     await createConnections([{
-        type: 'postgres',
         url: 'postgres://jilcswurwxfeor:fddc356fc93ae54a393e8745175578d69c05095ebef20d697a86d3f893b1cef6@ec2-52-0-93-3.compute-1.amazonaws.com:5432/dajs9255cl9b0',
-        extra: {
-             ssl: true
-        },
+        entities: [User],
+        type: 'postgres',
         logging: false,
         synchronize: false,
-        entities: [User]
+        extra: {
+            ssl: true,
+            rejectUnauthorized: false
+        }
     }]);
     
     const apolloServer = new ApolloServer({
