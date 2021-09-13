@@ -17,7 +17,6 @@ const main = async () => {
         logging: false,
         synchronize: false,
         extra: {
-            ssl: true,
             rejectUnauthorized: false
         }
     }]);
