@@ -33,7 +33,9 @@ const main = async () => {
 
     apolloServer.applyMiddleware({app});
 
-    app.listen(process.env.PORT || 4000, () => {
+    const port = process.env.PORT || 4000;
+
+    app.listen(port, () => {
         console.log(`The server listening at http://localhost:${port}`)
     });
 }
