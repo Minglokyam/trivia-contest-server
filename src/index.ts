@@ -36,7 +36,7 @@ const main = async () => {
     const port = process.env.PORT || 4000;
 
     app.listen(port, () => {
-        console.log(`The server listening at http://localhost:${port}`)
+        console.log(`The server listening at https://trivia-contest.herokuapp.com/graphql`)
     });
 }
 
