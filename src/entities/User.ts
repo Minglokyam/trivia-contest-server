@@ -10,11 +10,11 @@ export class User{
 
     @Field(() => String)
     @CreateDateColumn()
-    createdAt: Date;
+    createdAt: string;
 
     @Field(() => String)
-    @CreateDateColumn()
-    updatedAt: Date;
+    @Column({type: 'text', default: new Date(new Date().setDate(new Date().getDate() - 1)).getTime().toString()})
+    updatedAt: string;
 
     @Field()
     @Column({unique: true})

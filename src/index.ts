@@ -21,7 +21,7 @@ const main = async () => {
             }
         }
     }]);
-    
+
     const apolloServer = new ApolloServer({
         schema: await buildSchema({
             resolvers: [UserResolver],
@@ -34,7 +34,6 @@ const main = async () => {
     apolloServer.applyMiddleware({app});
 
     const port = process.env.PORT || 4000;
-
     app.listen(port, () => {
         console.log(`The server listening at https://trivia-contest.herokuapp.com/graphql`)
     });

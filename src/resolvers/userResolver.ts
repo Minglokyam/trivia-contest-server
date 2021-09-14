@@ -38,22 +38,28 @@ export class UserResolver{
         return usersResult;
     }
 
-    @Mutation(() => Boolean)
+    @Mutation(() => UserResponse)
     async incrementPoint(
         @Arg('id', () => Int) id: number,
         @Arg('incrementPoints', () => Int) incrementPoints: number
-    ){
+    ): Promise<UserResponse>{
         const entityManager = getManager();
         const user = await entityManager.findOne(User, id);
 
         if(!user){
-            return true;
+            return {
+                errors: [{
+                    field: 'id',
+                    message: 'The user does not exist'
+                }]
+            };;
         }
 
         user.points += incrementPoints;
+        user.updatedAt = new Date().getTime().toString();
         await entityManager.save(user);
 
-        return true;
+        return {user};
     }
 
     @Mutation(() => UserResponse)
